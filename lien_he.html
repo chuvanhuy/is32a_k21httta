@@ -5,8 +5,52 @@
 	<meta charset="utf-8">
 </head>
 <body>
-	<h1><a href="trang_chu.html">TRANG CHỦ</a> | <a href="gioi_thieu.html">GIỚI THIỆU</a> | <a href="tin_tuc.html">TIN TỨC</a> | <a href="san_pham.html">SẢN PHẨM</a> | <a href="lien_he.html">LIÊN HỆ</a></h1>
+	<h3><a href="trang_chu.html">TRANG CHỦ</a> | <a href="gioi_thieu.html">GIỚI THIỆU</a> | <a href="tin_tuc.html">TIN TỨC</a> | <a href="san_pham.html">SẢN PHẨM</a> | <a href="lien_he.html">LIÊN HỆ</a></h3>
 	<hr>
-	<p>Nội dung trang liên hệ</p>
+
+	<h4><font color="red">Thông tin liên hệ</font></h4>
+	<ul>
+		<li><b>CÔNG TY TNHH ABC COMPANY</b></li>
+		<li><b>Địa chỉ:</b> 12 Chùa Bộc, Đống Đa, Hà Nội</li>
+		<li><b>Số ĐT:</b> 0243.8526419</li>
+		<li><b>Email:</b> contact@abccompany.com</li>
+		<li><b>Website:</b> http://abccompany.com</li>
+	</ul>
+
+	<h4><font color="red">Phản hồi</font></h4>
+	<form action="gui_phan_hoi.php" method="post">
+		<table>
+			<tr>
+				<td style="width: 180px;">Họ và tên:</td>
+				<td><input type="text" name="txtHoTen"></td>
+			</tr>
+			<tr>
+				<td>Điện thoại:</td>
+				<td><input type="text" name="txtDienThoai"></td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td><input type="text" name="txtEmail"></td>
+			</tr>
+			<tr>
+				<td>Đơn vị tiếp nhận phản hồi:</td>
+				<td>
+					<select>
+						<option>Bộ phận nhân sự</option>
+						<option>Bộ phận kế toán</option>
+						<option>Bộ phận kỹ thuật</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Nội dung phản hồi:</td>
+				<td><textarea name="txtPhanHoi"></textarea></td>
+			</tr>
+			<tr>
+				<td><input type="submit" name="sbtGui" value="Gửi"></td>
+				<td></td>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>
