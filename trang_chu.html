@@ -2,6 +2,29 @@
 <head>
 	<title>Trang chủ | Khoa ITDE (Information Technology & Digital Economics)</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript">
+		// Hiển thị hộp thoại chào mừng
+		window.alert("Chào mừng các bạn đến với Website của tôi");
+
+		// In dữ liệu lên WEBPAGE
+		document.write("Tôi tên là: Nguyễn Ngọc A <br>");
+		document.write("Lớp: K22HTTTA");
+
+		// In dữ liệu ẩn, phục vụ FIXBUGS
+		console.log("Tối nay, 8h ở vườn hoa");
+		console.log("Sáng mai, các bạn nhớ tham dự sự kiện BLA BLA");
+
+		// Xử lý khai báo biến, gán giá trị cho biến, biến đổi giá trị của biến
+		var ho_ten;
+		document.write("<br>Biến ho_ten ban đầu có giá trị: "+ho_ten);
+
+		ho_ten = "Nguyễn Phương Anh";
+		document.write("<br>Biến ho_ten sau khi gán có giá trị: "+ho_ten);
+
+		ho_ten = 3+" - 22A4040053 - "+ho_ten;
+		document.write("<br>Biến ho_ten sau khi biến đổi có giá trị: "+ho_ten);
+		
+	</script>	
 </head>
 
 <body>
@@ -9,7 +32,9 @@
 	<hr>
 
 	<h3 id="tieu_de_chinh">TRANG CHỦ</h3>
-	<p>Hello world!!!</p>
+	<p style="text-align: center;"><button onclick="document.getElementById('tieu_de_chinh').innerHTML='----- HOME PAGE ----'">Sửa thông tin</button></p>
 	<p style="text-align: center;"><img src="images/thumb_20210821_diep_ap_1.jpg"></p>
+
+	<script type="text/javascript" src="js/home.js"></script>
 </body>
 </html>

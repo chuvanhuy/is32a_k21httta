@@ -1,0 +1,1 @@
+document.getElementById('tieu_de_chinh').innerHTML='CHÀO MỪNG CÁC BẠN ĐẾN VỚI WEBSITE CỦA TÔI';
