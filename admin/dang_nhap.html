@@ -4,12 +4,34 @@
 	<title>Đăng nhập | Khoa ITDE (Information Technology & Digital Economics)</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<script type="text/javascript">
+		function check_nhap_thong_tin() {
+			var user_name = document.getElementById("txtUsername").value;
+			var password = document.getElementById("txtPassword").value;
+
+
+			// Kiểm tra xem ô Username đã nhập thông tin hay chưa?
+			if (user_name=="") {
+				window.alert("Bạn chưa nhập Username");
+				return false;
+			}
+
+			// Kiểmt tra xem ô Password đã nhập thông tin hay chưa?
+			if (password=="") {
+				window.alert("Bạn chưa nhập Password");
+				return false;
+			}
+
+			// Cả nhập đủ thông tin; các bạn sẽ cho người dùng tiếp tục di chuyển đến trang xử lý đăng nhập
+			return true;
+		}
+	</script>
 </head>
 <body>
 	<h3 id="tieu_de_chinh">ĐĂNG NHẬP HỆ THỐNG</h3>
-	<form action="thuc_hien_dang_nhap.php" method="post">
-		<p>Username: <input type="text" name="txtUsername"></p>
-		<p>Password: <input type="password" name="txtPassword"></p>
+	<form action="thuc_hien_dang_nhap.php" method="post" onsubmit="return check_nhap_thong_tin();">
+		<p>Username: <input type="text" name="txtUsername" id="txtUsername"></p>
+		<p>Password: <input type="password" name="txtPassword" id="txtPassword"></p>
 		<p><input type="submit" name="sbtDangNhap" value="Đăng nhập"></p>
 	</form>
 </body>
