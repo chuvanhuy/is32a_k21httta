@@ -37,6 +37,10 @@
         <![endif]-->
     
 	<body  data-spy="scroll" data-target="#main-menu">
+
+  <?php echo "Chào mừng bạn đến với Website của tôi!!!";?>
+  <?php echo "<br>Hôm nay là ngày: ".date("D/m/Y");?>
+  <?php echo "<br> Làm sao cắt được tên đệm của bạn Vũ Mai Anh: ".substr("Vũ Mai Anh", 4, 3);?>
  
 
   <!--Start Page loader -->
@@ -1526,7 +1530,7 @@ viverra purus tristique.</p>
            <div class="row">
            
                  <div class="title-box text-center">
-                    <h2 class="title">Latest Blog</h2>
+                    <h2 class="title">Tin tức mới nhất</h2>
                  </div>
                 
                <!-- Start Blog item #1-->
@@ -1537,7 +1541,7 @@ viverra purus tristique.</p>
                          </div>
                        <div class="post-desc">
                            <h4>consectetur adipisicing Inventore</h4>
-                           <h5>12 May, 2015 / 5 Comments</h5>
+                           <h5><?php echo date("d/M/Y");?> / 5 Comments</h5>
                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, dolorum, fugiat, eligendi magni quibusdam iure cupiditate ex voluptas unde</p>
                             <a href="blog.html" class="btn btn-gray-border">Read More</a>
                        </div>
@@ -1552,7 +1556,7 @@ viverra purus tristique.</p>
                          </div>
                        <div class="post-desc">
                            <h4>consectetur adipisicing Inventore</h4>
-                            <h5>12 May, 2015 / 3 Comments</h5>
+                            <h5><?php echo date("d/M/Y");?> / 3 Comments</h5>
                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, dolorum, fugiat, eligendi magni quibusdam iure cupiditate ex voluptas unde</p>
                             <a href="blog.html" class="btn btn-gray-border">Read More</a>
                        </div>
@@ -1567,7 +1571,7 @@ viverra purus tristique.</p>
                          </div>
                        <div class="post-desc">
                            <h4>consectetur adipisicing Inventore</h4>
-                             <h5>12 May, 2015 / 11 Comments</h5>
+                             <h5><?php echo date("d/M/Y");?> / 11 Comments</h5>
                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, dolorum, fugiat, eligendi magni quibusdam iure cupiditate ex voluptas unde</p>
                         <a href="blog.html" class="btn btn-gray-border">Read More</a>
                        </div>
