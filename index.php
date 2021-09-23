@@ -38,9 +38,104 @@
     
 	<body  data-spy="scroll" data-target="#main-menu">
 
-  <?php echo "Chào mừng bạn đến với Website của tôi!!!";?>
-  <?php echo "<br>Hôm nay là ngày: ".date("D/m/Y");?>
-  <?php echo "<br> Làm sao cắt được tên đệm của bạn Vũ Mai Anh: ".substr("Vũ Mai Anh", 4, 3);?>
+  <?php 
+    // In ra một dòng thông báo, chào mừng
+    echo "Chào mừng bạn đến với Website của tôi!!!";
+
+    # In ra một thông báo về ngày hiện tại
+    echo "<br>Hôm nay là ngày: ".date("D/m/Y");
+
+    /* In ra một chuỗi đã được xử lý thông qua hàm SUBSTR */
+    echo "<br>Làm sao cắt được tên đệm của bạn Vũ Mai Anh: ".substr("Vũ Mai Anh", 4, 3);
+
+    // Thử nghiệm câu lệnh PRINT_R xem có sự khác biệt gì với câu lệnh ECHO
+    print_r("<br>Thử nghiệm câu lệnh PRINT_R<br>");
+
+    // Thử nghiệm câu lệnh VAR_DUMP
+    $nam_sinh = 2001;
+    var_dump($nam_sinh);
+
+    // Kiểm tra xem biến $ NĂM SINH kiểu dữ liệu là gì?
+    echo "<br>Kiểu dữ liệu của BIẾN NĂM SINH là: ".gettype($nam_sinh);
+
+    // Kiểm tra xem biến $ NĂM SINH đã được GÁN GIÁ TRỊ HAY CHƯA?
+    if (isset($nam_sinh)==1) {
+      echo "<br>Biến NĂM SINH đã được gán giá trị";
+    } else {
+      echo "<br>Biến NĂM SINH chưa được gán giá trị";
+    }
+
+    // Thử nghiệm 1 biến khác
+    $ngay_hien_tai;
+    echo "<br>Kiểu dữ liệu của BIẾN NGÀY HIỆN TẠI là: ".gettype($ngay_hien_tai);
+    if (isset($ngay_hien_tai)==1) {
+      echo "<br>Biến NGÀY HIỆN TẠI đã được gán giá trị";
+    } else {
+      echo "<br>Biến NGÀY HIỆN TẠI chưa được gán giá trị";
+    }
+
+    $ngay_hien_tai = date("d/m/Y");
+    echo "<br>Kiểu dữ liệu của BIẾN NGÀY HIỆN TẠI là: ".gettype($ngay_hien_tai);
+    if (isset($ngay_hien_tai)==1) {
+      echo "<br>Biến NGÀY HIỆN TẠI đã được gán giá trị";
+    } else {
+      echo "<br>Biến NGÀY HIỆN TẠI chưa được gán giá trị";
+    }
+
+    // Sử dụng hàm UNSET để giải phóng vùng nhớ đã được cấp phát cho 1 biến
+    unset($ngay_hien_tai);
+    echo "<br>Kiểu dữ liệu của BIẾN NGÀY HIỆN TẠI là: ".gettype($ngay_hien_tai);
+    if (isset($ngay_hien_tai)==1) {
+      echo "<br>Biến NGÀY HIỆN TẠI đã được gán giá trị";
+    } else {
+      echo "<br>Biến NGÀY HIỆN TẠI chưa được gán giá trị";
+    }
+
+    // Sử dụng hàm EMPTY để check xem một biến có RỖNG hay không?
+    if (empty($ngay_hien_tai)==1) {
+      echo "<br>Biến NGÀY HIỆN TẠI đang RỖNG!!!";
+    } else {
+      echo "<br>Biến NGÀY HIỆN TẠI khác RỖNG, đang có giá trị!!!";
+    }
+
+    $ngay_hien_tai=date("d/M/Y");
+    echo "<br>Ngày hiện tại là: ".$ngay_hien_tai;
+    if (empty($ngay_hien_tai)==1) {
+      echo "<br>Biến NGÀY HIỆN TẠI đang RỖNG!!!";
+    } else {
+      echo "<br>Biến NGÀY HIỆN TẠI khác RỖNG, đang có giá trị!!!";
+    }
+
+    // Thử nghiệm toán tử GHÉP CHUỖI (.) trong PHP
+    $diem_chuan = 26.3;
+    echo "<br>Điểm chuẩn trúng tuyển ngành HTTTQL năm 2021 là: ".$diem_chuan." điểm.";
+
+    // Khai báo điểm thi mà chúng ta đạt được
+    $diem_dat_duoc = 23;
+
+    // Khẳng định bạn ĐỖ hay TRƯỢT
+    $ket_qua;     // Lưu lại trạng thái các bạn ĐỖ hay TRƯỢT
+    if ($diem_dat_duoc >= $diem_chuan) {
+      $ket_qua = "ĐỖ";
+    } else {
+      $ket_qua = "TRƯỢT";
+    }
+    echo "<br>BẠN THÍ SINH đã ".$ket_qua." - C1: thực hiện mất 6 dòng mã lệnh";
+    
+    // Tối ưu hóa xử lý trên thông qua phép toán so sánh
+    $ket_qua = $diem_dat_duoc>=$diem_chuan ? "ĐỖ" : "TRƯỢT";
+    echo "<br>BẠN THÍ SINH đã ".$ket_qua." - C2: thực hiện mất 1 dòng mã lệnh";
+
+    // Thực nghiệm vòng lặp FOR trong PHP
+    for ($i=1; $i <= 5; $i++) { 
+      echo "<br>Lần lặp thứ: ".$i." có giá trị ".$i*$i;
+
+      // Chỉ muốn nó lặp hết 3 lần là thoát ra ngoài
+      if ($i==3) {
+        break;
+      }      
+    }
+  ?>
  
 
   <!--Start Page loader -->
