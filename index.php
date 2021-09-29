@@ -1722,51 +1722,45 @@ viverra purus tristique.</p>
                  <div class="title-box text-center">
                     <h2 class="title">Tin tức mới nhất</h2>
                  </div>
-                
-               <!-- Start Blog item #1-->
-               <div class="col-md-4">
-                   <div class="blog-post">
-                         <div class="post-media">
-							 <img src="images/blog/blog1.jpg" alt="">
-                         </div>
-                       <div class="post-desc">
-                           <h4>consectetur adipisicing Inventore</h4>
-                           <h5><?php echo date("d/M/Y");?> / 5 Comments</h5>
-                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, dolorum, fugiat, eligendi magni quibusdam iure cupiditate ex voluptas unde</p>
-                            <a href="blog.html" class="btn btn-gray-border">Read More</a>
+
+                <?php 
+                    // 1. Kết nối đến MÁY CHỦ DỮ LIỆU & ĐẾN CSDL mà các bạn muốn LẤY, THÊM MỚI, SỬA, XÓA dữ liệu
+                    $ket_noi = mysqli_connect("localhost", "root", "", "k22httta_db");
+
+                    // 2. Viết câu lệnh truy vấn để lấy ra được DỮ LIỆU MONG MUỐN (TIN TỨC đã lưu trong CSDL)
+                    $sql = "
+                              SELECT * 
+                              FROM tbl_tin_tuc 
+                              ORDER BY tin_tuc_id DESC";
+
+                    // 3. Thực thi câu lệnh truy vấn (mục đích trả về dữ liệu các bạn cần)
+                    $noi_dung_tin_tuc = mysqli_query($ket_noi, $sql);
+
+                    // 4. Hiển thị ra dữ liệu mà các bạn vừa lấy được
+                    while ($row = mysqli_fetch_array($noi_dung_tin_tuc)) 
+                    {
+                    ;?>
+
+                       <div class="col-md-4">
+                            <div class="blog-post">
+                                 <div class="post-media">
+                                    <img src="images/blog/blog1.jpg" alt="">
+                                 </div>
+                               <div class="post-desc">
+                                   <h4><?php echo $row["tieu_de"];?></h4>
+                                   <h5><?php echo date("d/m/Y H:i", strtotime($row["ngay_dang_tin"]));?> / <?php echo $row["so_lan_doc"];?> lượt đọc</h5>
+                                   <p><?php echo $row["mo_ta"];?></p>
+                                    <a href="blog.html" class="btn btn-gray-border">Chi tiết</a>
+                               </div>
+                            </div>
                        </div>
-                   </div>
-               </div>
-               
-               <!-- Start Blog item #2-->
-               <div class="col-md-4">
-                   <div class="blog-post">
-                         <div class="post-media">
-							 <img src="images/blog/blog2.jpg" alt="">
-                         </div>
-                       <div class="post-desc">
-                           <h4>consectetur adipisicing Inventore</h4>
-                            <h5><?php echo date("d/M/Y");?> / 3 Comments</h5>
-                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, dolorum, fugiat, eligendi magni quibusdam iure cupiditate ex voluptas unde</p>
-                            <a href="blog.html" class="btn btn-gray-border">Read More</a>
-                       </div>
-                   </div>
-               </div>
-               
-               <!-- Start Blog item #3-->
-               <div class="col-md-4">
-                   <div class="blog-post">
-                         <div class="post-media">
-							 <img src="images/blog/blog3.jpg" alt="">
-                         </div>
-                       <div class="post-desc">
-                           <h4>consectetur adipisicing Inventore</h4>
-                             <h5><?php echo date("d/M/Y");?> / 11 Comments</h5>
-                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, dolorum, fugiat, eligendi magni quibusdam iure cupiditate ex voluptas unde</p>
-                        <a href="blog.html" class="btn btn-gray-border">Read More</a>
-                       </div>
-                   </div>
-               </div>
+
+                    <?php 
+                    }
+
+                    // 5. Đóng kết nối sau khi sử dụng xong
+                    mysqli_close($ket_noi);
+                ;?>
 
            </div> <!--/.row-->
        </div> <!--/.container-->
@@ -1781,32 +1775,42 @@ viverra purus tristique.</p>
               <div class="row">
               
                   	<div class="title-box text-center white">
-                        <h2 class="title">What clients say.</h2>
+                        <h2 class="title">Khách hàng chia sẻ</h2>
                      </div>
 
               
                     <div class="col-md-10 col-md-offset-1">
                         <div class="testimonials-carousel">
+                            
+                        <?php 
+                            // 1. Kết nối đến MÁY CHỦ DỮ LIỆU & ĐẾN CSDL mà các bạn muốn LẤY, THÊM MỚI, SỬA, XÓA dữ liệu
+                            $ket_noi = mysqli_connect("localhost", "root", "", "k22httta_db");
+
+                            // 2. Viết câu lệnh truy vấn để lấy ra được DỮ LIỆU MONG MUỐN (NGƯỜI DÙNG đã lưu trong CSDL)
+                            $sql = "
+                                      SELECT * 
+                                      FROM tbl_nguoi_dung 
+                                      ORDER BY nguoi_dung_id DESC";
+
+                            // 3. Thực thi câu lệnh truy vấn (mục đích trả về dữ liệu các bạn cần)
+                            $khach_hang = mysqli_query($ket_noi, $sql);
+
+                            // 4. Hiển thị ra dữ liệu mà các bạn vừa lấy được
+                            while ($row = mysqli_fetch_array($khach_hang)) 
+                            {
+                            ;?>
                             <!--Start Testimonial item #1-->
                             <div class="items">
-                                <div class="desc">habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet habitant morbi tristique senectus et netus et malesuada fames ac quam egestas.</div>
+                                <div class="desc"><?php echo $row["triet_ly"] ;?></div>
                                 <img src="images/testimonial/testimonial-img1.jpg" class="testimonial-pic" alt="testimonials" />
-                                <div class="name">Andrew Doe</div>
+                                <div class="name"><?php echo $row["ten_nguoi_dung"];?></div>
                             </div>
-                            
-                              <!--Start Testimonial item #2-->
-                            <div class="items">
-                                <div class="desc">habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet habitant morbi tristique senectus et netus et malesuada fames ac quam egestas.</div>
-                                <img src="images/testimonial/testimonial-img2.jpg" class="testimonial-pic" alt="testimonials" />
-                                <div class="name">Andrew Doe</div>
-                            </div>
-                            
-                              <!--Start Testimonial item #3-->
-                            <div class="items">
-                                <div class="desc">habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet habitant morbi tristique senectus et netus et malesuada fames ac quam egestas.</div>
-                                <img src="images/testimonial/testimonial-img1.jpg" class="testimonial-pic" alt="testimonials" />
-                                <div class="name">Andrew Doe</div>
-                            </div>
+                            <?php 
+                            }
+
+                            // 5. Đóng kết nối sau khi sử dụng xong
+                            mysqli_close($ket_noi);
+                        ;?>
                         </div>
                     </div>
                 </div> <!--/.row-->
