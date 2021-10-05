@@ -24,7 +24,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Quản trị người dùng</title>
+        <title>Sửa tin tức</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -88,71 +88,57 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Quản trị người dùng</h1>
+                        <h1 class="mt-4">Quản trị tin tức</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.php">Quản trị hệ thống</a></li>
-                            <li class="breadcrumb-item active">Quản trị người dùng</li>
+                            <li class="breadcrumb-item active">Quản trị tin tức</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Danh sách người dùng
+                                Danh sách tin tức | <a href="tin_tuc_them_moi.php">Thêm mới</a>
                             </div>
                             <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th style="text-align: center;">STT</th>
-                                            <th style="text-align: center;">Tên người dùng</th>
-                                            <th style="text-align: center;">Email</th>                  
-                                            <th style="text-align: center;">Sửa</th>
-                                            <th style="text-align: center;">Xóa</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th style="text-align: center;">STT</th>
-                                            <th style="text-align: center;">Tên người dùng</th>
-                                            <th style="text-align: center;">Email</th>
-                                            <th style="text-align: center;">Sửa</th>
-                                            <th style="text-align: center;">Xóa</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                    <?php 
-                                        // 1. Kết nối đến MÁY CHỦ DỮ LIỆU & ĐẾN CSDL mà các bạn muốn LẤY, THÊM MỚI, SỬA, XÓA dữ liệu
-                                        $ket_noi = mysqli_connect("localhost", "root", "", "k22httta_db");
+                                <?php
+                                    // Viết ra các câu lệnh để load dữ liệu và hiển thị lên Webpage; giúp người quản trị chỉ cần hiệu chỉnh những nội dung mà họ mong muốn
 
-                                        // 2. Viết câu lệnh truy vấn để lấy ra được DỮ LIỆU MONG MUỐN (NGƯỜI DÙNG đã lưu trong CSDL)
-                                        $sql = "
-                                                  SELECT * 
-                                                  FROM tbl_nguoi_dung 
-                                                  ORDER BY nguoi_dung_id DESC";
+                                    // 1. Kết nối đến MÁY CHỦ DỮ LIỆU & ĐẾN CSDL mà các bạn muốn LẤY, THÊM MỚI, SỬA, XÓA dữ liệu
+                                    $ket_noi = mysqli_connect("localhost", "root", "", "k22httta_db");
 
-                                        // 3. Thực thi câu lệnh truy vấn (mục đích trả về dữ liệu các bạn cần)
-                                        $noi_dung_nguoi_dung = mysqli_query($ket_noi, $sql);
+                                    // 2. Viết câu lệnh truy vấn để lấy ra được DỮ LIỆU MONG MUỐN (TIN TỨC đã lưu trong CSDL)
+                                    $tin_tuc_id = $_GET["id"];
 
-                                        // 4. Hiển thị ra dữ liệu mà các bạn vừa lấy được
-                                        $i=0;
-                                        while ($row = mysqli_fetch_array($noi_dung_nguoi_dung)) 
-                                        {
-                                            $i++;
-                                    ;?>
-                                        <tr>
-                                            <td style="text-align: center;"><?php echo $i;?></td>
-                                            <td><?php echo $row["ten_nguoi_dung"];?></td>
-                                            <td><?php echo $row["email"];?></td>
-                                            <td style="text-align: center;">Sửa</td>
-                                            <td style="text-align: center;">Xóa</td>
-                                        </tr>                                        
-                                        <?php 
-                                        }
+                                    $sql = "
+                                              SELECT * 
+                                              FROM tbl_tin_tuc 
+                                              WHERE tin_tuc_id = ".$tin_tuc_id."
+                                              ORDER BY tin_tuc_id DESC
+                                    ";
 
-                                        // 5. Đóng kết nối sau khi sử dụng xong
-                                        mysqli_close($ket_noi);
-                                    ;?>
-                                    </tbody>
-                                </table>
+                                    // 3. Thực thi câu lệnh truy vấn (mục đích trả về dữ liệu các bạn cần)
+                                    $noi_dung_tin_tuc = mysqli_query($ket_noi, $sql);
+
+                                    // 4. Hiển thị ra dữ liệu mà các bạn vừa lấy được
+                                    $row = mysqli_fetch_array($noi_dung_tin_tuc);
+                                ;?>
+                                <form method="POST" action="tin_tuc_sua_thuc_hien.php" enctype="multipart/form-data">
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="txtTieuDe" name="txtTieuDe" placeholder="Tiêu đề bài viết" value="<?php echo $row['tieu_de'];?>" />
+                                        <label for="txtTieuDe">Tiêu đề bài viết</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="txtMoTa" name="txtMoTa" placeholder="Mô tả nội dung chính của bài viết" value="<?php echo $row['mo_ta'];?>" />
+                                        <label for="txtMoTa">Mô tả nội dung chính của bài viết</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="txtNoiDung" name="txtNoiDung" placeholder="Nội dung bài viết" value="<?php echo $row['noi_dung'];?>" />
+                                        <label for="txtNoiDung">Nội dung bài viết</label>
+                                    </div>
+                                    <div class="mt-4 mb-0">
+                                        <input type="hidden" name="txtID" value="<?php echo $row['tin_tuc_id'];?>">
+                                        <div class="d-grid"><button type="submit">Cập nhật</button></div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

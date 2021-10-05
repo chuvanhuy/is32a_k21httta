@@ -1,3 +1,21 @@
+<?php 
+    // Mục đích kiểm tra xem bạn có quyền truy cập trang này không thông qua BIẾN $_SESSION['da_dang_nhap']
+    session_start();
+    if (!$_SESSION["da_dang_nhap"]) {
+        echo "
+            <script type='text/javascript'>
+                window.alert('Bạn không có quyền truy cập');
+            </script>
+        ";
+
+        echo "
+            <script type='text/javascript'>
+                window.location.href='dang_nhap.php';
+            </script>
+        ";
+    }
+;?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -121,8 +139,8 @@
                                         <tr>
                                             <td style="text-align: center;"><?php echo $i;?></td>
                                             <td><?php echo $row["tieu_de"];?></td>
-                                            <td style="text-align: center;">Sửa</td>
-                                            <td style="text-align: center;">Xóa</td>
+                                            <td style="text-align: center;"><a href="tin_tuc_sua.php?id=<?php echo $row['tin_tuc_id'];?>">Sửa</a></td>
+                                            <td style="text-align: center;"><a href="tin_tuc_xoa.php?id=<?php echo $row['tin_tuc_id'];?>">Xóa</a></td>
                                         </tr>                                        
                                         <?php 
                                         }
