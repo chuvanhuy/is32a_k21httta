@@ -1,10 +1,4 @@
 <!doctype html>
-<!--
-	Lamoda by TEMPLATE STOCK
-	templatestock.co @templatestock
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
-
 
 <html lang="en-gb" class="no-js">
   <head>
@@ -37,201 +31,6 @@
         <![endif]-->
     
 	<body  data-spy="scroll" data-target="#main-menu">
-
-  <?php 
-    // In ra một dòng thông báo, chào mừng
-    echo "Chào mừng bạn đến với Website của tôi!!!";
-
-    # In ra một thông báo về ngày hiện tại
-    echo "<br>Hôm nay là ngày: ".date("D/m/Y");
-
-    /* In ra một chuỗi đã được xử lý thông qua hàm SUBSTR */
-    echo "<br>Làm sao cắt được tên đệm của bạn Vũ Mai Anh: ".substr("Vũ Mai Anh", 4, 3);
-
-    // Thử nghiệm câu lệnh PRINT_R xem có sự khác biệt gì với câu lệnh ECHO
-    print_r("<br>Thử nghiệm câu lệnh PRINT_R<br>");
-
-    // Thử nghiệm câu lệnh VAR_DUMP
-    $nam_sinh = 2001;
-    var_dump($nam_sinh);
-
-    // Kiểm tra xem biến $ NĂM SINH kiểu dữ liệu là gì?
-    echo "<br>Kiểu dữ liệu của BIẾN NĂM SINH là: ".gettype($nam_sinh);
-
-    // Kiểm tra xem biến $ NĂM SINH đã được GÁN GIÁ TRỊ HAY CHƯA?
-    if (isset($nam_sinh)==1) {
-      echo "<br>Biến NĂM SINH đã được gán giá trị";
-    } else {
-      echo "<br>Biến NĂM SINH chưa được gán giá trị";
-    }
-
-    // Thử nghiệm 1 biến khác
-    $ngay_hien_tai;
-    echo "<br>Kiểu dữ liệu của BIẾN NGÀY HIỆN TẠI là: ".gettype($ngay_hien_tai);
-    if (isset($ngay_hien_tai)==1) {
-      echo "<br>Biến NGÀY HIỆN TẠI đã được gán giá trị";
-    } else {
-      echo "<br>Biến NGÀY HIỆN TẠI chưa được gán giá trị";
-    }
-
-    $ngay_hien_tai = date("d/m/Y");
-    echo "<br>Kiểu dữ liệu của BIẾN NGÀY HIỆN TẠI là: ".gettype($ngay_hien_tai);
-    if (isset($ngay_hien_tai)==1) {
-      echo "<br>Biến NGÀY HIỆN TẠI đã được gán giá trị";
-    } else {
-      echo "<br>Biến NGÀY HIỆN TẠI chưa được gán giá trị";
-    }
-
-    // Sử dụng hàm UNSET để giải phóng vùng nhớ đã được cấp phát cho 1 biến
-    unset($ngay_hien_tai);
-    echo "<br>Kiểu dữ liệu của BIẾN NGÀY HIỆN TẠI là: ".gettype($ngay_hien_tai);
-    if (isset($ngay_hien_tai)==1) {
-      echo "<br>Biến NGÀY HIỆN TẠI đã được gán giá trị";
-    } else {
-      echo "<br>Biến NGÀY HIỆN TẠI chưa được gán giá trị";
-    }
-
-    // Sử dụng hàm EMPTY để check xem một biến có RỖNG hay không?
-    if (empty($ngay_hien_tai)==1) {
-      echo "<br>Biến NGÀY HIỆN TẠI đang RỖNG!!!";
-    } else {
-      echo "<br>Biến NGÀY HIỆN TẠI khác RỖNG, đang có giá trị!!!";
-    }
-
-    $ngay_hien_tai=date("d/M/Y");
-    echo "<br>Ngày hiện tại là: ".$ngay_hien_tai;
-    if (empty($ngay_hien_tai)==1) {
-      echo "<br>Biến NGÀY HIỆN TẠI đang RỖNG!!!";
-    } else {
-      echo "<br>Biến NGÀY HIỆN TẠI khác RỖNG, đang có giá trị!!!";
-    }
-
-    // Thử nghiệm toán tử GHÉP CHUỖI (.) trong PHP
-    $diem_chuan = 26.3;
-    echo "<br>Điểm chuẩn trúng tuyển ngành HTTTQL năm 2021 là: ".$diem_chuan." điểm.";
-
-    // Khai báo điểm thi mà chúng ta đạt được
-    $diem_dat_duoc = 23;
-
-    // Khẳng định bạn ĐỖ hay TRƯỢT
-    $ket_qua;     // Lưu lại trạng thái các bạn ĐỖ hay TRƯỢT
-    if ($diem_dat_duoc >= $diem_chuan) {
-      $ket_qua = "ĐỖ";
-    } else {
-      $ket_qua = "TRƯỢT";
-    }
-    echo "<br>BẠN THÍ SINH đã ".$ket_qua." - C1: thực hiện mất 6 dòng mã lệnh";
-    
-    // Tối ưu hóa xử lý trên thông qua phép toán so sánh
-    $ket_qua = $diem_dat_duoc>=$diem_chuan ? "ĐỖ" : "TRƯỢT";
-    echo "<br>BẠN THÍ SINH đã ".$ket_qua." - C2: thực hiện mất 1 dòng mã lệnh";
-
-    // Thực nghiệm vòng lặp FOR trong PHP
-    for ($i=1; $i <= 5; $i++) { 
-      echo "<br>Lần lặp thứ: ".$i." có giá trị ".$i*$i;
-
-      // Chỉ muốn nó lặp hết 3 lần là thoát ra ngoài
-      if ($i==3) {
-        break;
-      }      
-    }
-
-    // Cách 1: khai báo 1 mảng SINH VIÊN trong PHP
-    $sinh_vien = array("Ngọc Anh", "Phương Anh", "Việt Anh", "Thu Trà", "Ngọc Bảo");
-
-    // In thông tin của các phần tử trong mảng SINH VIÊN
-    echo "<br>Bạn sinh viên thứ 1: ".$sinh_vien[0];
-    echo "<br>Bạn sinh viên thứ 2: ".$sinh_vien[1];
-    echo "<br>Bạn sinh viên thứ 3: ".$sinh_vien[2];
-    echo "<br>Bạn sinh viên thứ 4: ".$sinh_vien[3];
-    echo "<br>Bạn sinh viên thứ 5: ".$sinh_vien[4];
-
-    // In thông tin của các phần tử trong mảng SINH VIÊN dựa trên vòng lặp FOR
-    $so_luong_sinh_vien = count($sinh_vien);         # Đếm số phần tử trong mảng SINH VIÊN
-    echo "<br>Mảng SINH VIÊN có: ".$so_luong_sinh_vien;
-
-    for ($i=0; $i < $so_luong_sinh_vien; $i++) { 
-      echo "<br>Cách 2 để in thông tin sinh viên thứ ".($i+1).": ".$sinh_vien[$i];
-    }
-
-    // Cách 2: khai báo 1 mảng HỌC VIÊN trong PHP
-    $hoc_vien = array("Ngọc Anh" => "Nữ", "Phương Anh" => "Nữ", "Việt Anh" => "Nam", "Thu Trà" => "Nữ", "Ngọc Bảo" => "Nam");
-
-    // In thông tin về giới tính của các bạn học viên
-    echo "<br>Bạn thứ 1 có giới tính: ".$hoc_vien["Ngọc Anh"];
-    echo "<br>Bạn thứ 2 có giới tính: ".$hoc_vien["Phương Anh"];
-    echo "<br>Bạn thứ 3 có giới tính: ".$hoc_vien["Việt Anh"];
-    echo "<br>Bạn thứ 4 có giới tính: ".$hoc_vien["Thu Trà"];
-    echo "<br>Bạn thứ 5 có giới tính: ".$hoc_vien["Ngọc Bảo"];
-
-    // In thông tin họ tên & giới tính của các bạn học viên
-    foreach ($hoc_vien as $key => $value) {
-      echo "<br>Bạn học viên ".$key." có giới tính là: ".$value;
-    }
-
-    // Cách 3: khai báo 1 mảng HỌC VIÊN trong PHP
-    $hoc_vien = array("0" => "Ngọc Anh", "1" => "Phương Anh", "2" => "Việt Anh", "3" => "Thu Trà", "4" => "Ngọc Bảo");
-
-    // In thông tin của các phần tử trong mảng SINH VIÊN
-    echo "<br>Bạn sinh viên thứ 1: ".$hoc_vien["0"];
-    echo "<br>Bạn sinh viên thứ 2: ".$hoc_vien["1"];
-    echo "<br>Bạn sinh viên thứ 3: ".$hoc_vien["2"];
-    echo "<br>Bạn sinh viên thứ 4: ".$hoc_vien["3"];
-    echo "<br>Bạn sinh viên thứ 5: ".$hoc_vien["4"];
-
-    /*
-    Khai báo 1 mảng 2 chiều
-    Tên SP            Số lượng tồn          Giá bán
-    iPhone 13         2                     35.000.000đ
-    iPad 5            10                    26.000.000đ
-    Samsung Note 10   5                     11.000.000đ
-
-    In thông tin vắn tắt liên quan đến "Tên Sản Phẩm - Giá bán tương ứng"    
-    */
-
-    // Cách khai báo 1 mảng 2 chiều
-    $san_pham = array (
-      array("iPhone 13",2,35000000),
-      array("iPad 5",10,26000000),
-      array("Samsung Note 10",5,11000000)
-    );
-
-    // In ra thông tin liên quan đến từng sản phẩm "Tên sản phẩm - Giá bán tương ứng"
-    echo "<br>Sản phẩm thứ 1 là ".$san_pham[0][0]." có giá bán là: ".$san_pham[0][2];
-    echo "<br>Sản phẩm thứ 2 là ".$san_pham[1][0]." có giá bán là: ".$san_pham[1][2];
-    echo "<br>Sản phẩm thứ 3 là ".$san_pham[2][0]." có giá bán là: ".$san_pham[2][2];
-
-    // Thử khai báo 1 LỚP trong PHP
-    class xe_hoi {
-      # Thuộc tính
-      public $hang_xe;
-      public $ten_xe;
-      public $mau_sac;
-      public $nam_san_xuat;
-
-      # Phương thức 1: nó sẽ gán giá trị cho thuộc tính TÊN XE
-      function khai_bao_ten_xe($ten_xe) {
-        $this->ten_xe = $ten_xe;
-      }
-
-      # Phương thức 2: làm thế nào để có thể lấy ra được TÊN XE
-      function lay_ten_xe() {
-        return $this->ten_xe;
-      }
-    }
-
-    // Khởi tạo 1 ĐỐI TƯỢNG (1 loại xe mà bạn muốn đề cập) dựa trên LỚP mà các bạn vừa khai báo
-    $mazda = new xe_hoi();
-    $mazda->khai_bao_ten_xe("Mazda CX 30");
-
-
-    // In tên của XE mà các bạn vừa khởi tạo
-    echo "<br>Tên của xe bạn vừa đề cập là: ".$mazda->lay_ten_xe();
-
-
-
-  ?>
-  
 
   <!--Start Page loader -->
   <div id="pageloader">   
@@ -1724,14 +1523,15 @@ viverra purus tristique.</p>
                  </div>
 
                 <?php 
-                    // 1. Kết nối đến MÁY CHỦ DỮ LIỆU & ĐẾN CSDL mà các bạn muốn LẤY, THÊM MỚI, SỬA, XÓA dữ liệu
-                    $ket_noi = mysqli_connect("localhost", "root", "", "k22httta_db");
+                    // 1. Load file cấu hình để kết nối đến máy chủ CSDL, CSDL
+                    include('config.php');
 
                     // 2. Viết câu lệnh truy vấn để lấy ra được DỮ LIỆU MONG MUỐN (TIN TỨC đã lưu trong CSDL)
                     $sql = "
                               SELECT * 
                               FROM tbl_tin_tuc 
-                              ORDER BY tin_tuc_id DESC";
+                              ORDER BY tin_tuc_id DESC
+                              LIMIT 3";
 
                     // 3. Thực thi câu lệnh truy vấn (mục đích trả về dữ liệu các bạn cần)
                     $noi_dung_tin_tuc = mysqli_query($ket_noi, $sql);
@@ -1744,7 +1544,7 @@ viverra purus tristique.</p>
                        <div class="col-md-4">
                             <div class="blog-post">
                                  <div class="post-media">
-                                    <img src="images/blog/blog1.jpg" alt="">
+                                    <img src="<?php echo $row['anh_minh_hoa'] ? 'images/'.$row['anh_minh_hoa'] : 'images/blog/blog1.jpg';?>" alt="">
                                  </div>
                                <div class="post-desc">
                                    <h4><?php echo $row["tieu_de"];?></h4>
@@ -1783,8 +1583,8 @@ viverra purus tristique.</p>
                         <div class="testimonials-carousel">
                             
                         <?php 
-                            // 1. Kết nối đến MÁY CHỦ DỮ LIỆU & ĐẾN CSDL mà các bạn muốn LẤY, THÊM MỚI, SỬA, XÓA dữ liệu
-                            $ket_noi = mysqli_connect("localhost", "root", "", "k22httta_db");
+                            // 1. Load file cấu hình để kết nối đến máy chủ CSDL, CSDL
+                            include('config.php');
 
                             // 2. Viết câu lệnh truy vấn để lấy ra được DỮ LIỆU MONG MUỐN (NGƯỜI DÙNG đã lưu trong CSDL)
                             $sql = "
@@ -2000,4 +1800,3 @@ viverra purus tristique.</p>
     
  </body>
 </html>
-

@@ -1,6 +1,6 @@
 <?php 
-   	// 1. Kết nối đến MÁY CHỦ DỮ LIỆU & ĐẾN CSDL mà các bạn muốn LẤY, THÊM MỚI, SỬA, XÓA dữ liệu
-    $ket_noi = mysqli_connect("localhost", "root", "", "k22httta_db");
+    // 1. Load file cấu hình để kết nối đến máy chủ CSDL, CSDL
+    include('../config.php');
 
     // 2. Viết câu lệnh truy vấn để kiểm tra xem NGƯỜI DÙNG có tồn tại trong BẢNG NGƯỜI DÙNG?
     $email = $_POST["txtEmail"];

@@ -31,8 +31,9 @@
     </head>
     <body class="sb-nav-fixed">
         <?php 
-            // 1. Kết nối đến MÁY CHỦ DỮ LIỆU & ĐẾN CSDL mà các bạn muốn LẤY, THÊM MỚI, SỬA, XÓA dữ liệu
-            $ket_noi = mysqli_connect("localhost", "root", "", "k22httta_db");
+            // 1. Load file cấu hình để kết nối đến máy chủ CSDL, CSDL
+            include('../config.php');
+
 
             // 2. Lấy ra ID tin tức mà các bạn muốn XÓA
             $tin_tuc_id = $_GET['id'];

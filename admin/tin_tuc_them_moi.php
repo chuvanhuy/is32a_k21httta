@@ -28,6 +28,17 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script>
+          tinymce.init({
+            selector: '#txtMoTa'
+          });
+        </script>
+        <script>
+          tinymce.init({
+            selector: '#txtNoiDung'
+          });
+        </script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -105,6 +116,10 @@
                                         <label for="txtTieuDe">Tiêu đề bài viết</label>
                                     </div>
                                     <div class="form-floating mb-3">
+                                        <input type="file" class="form-control" id="txtAnhMinhHoa" name="txtAnhMinhHoa" placeholder="Ảnh minh họa" />
+                                        <label for="txtTieuDe">Ảnh minh họa</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
                                         <input class="form-control" id="txtMoTa" name="txtMoTa" placeholder="Mô tả nội dung chính của bài viết" />
                                         <label for="txtMoTa">Mô tả nội dung chính của bài viết</label>
                                     </div>
@@ -113,7 +128,7 @@
                                         <label for="txtNoiDung">Nội dung bài viết</label>
                                     </div>
                                     <div class="mt-4 mb-0">
-                                        <div class="d-grid"><button type="submit">Đăng bài</button></div>
+                                        <button type="submit">Đăng bài</button>
                                     </div>
                                 </form>
                             </div>

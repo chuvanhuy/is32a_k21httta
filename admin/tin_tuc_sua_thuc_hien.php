@@ -30,9 +30,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
-	    <?php 
-            // 1. Kết nối đến MÁY CHỦ DỮ LIỆU & ĐẾN CSDL mà các bạn muốn LẤY, THÊM MỚI, SỬA, XÓA dữ liệu
-            $ket_noi = mysqli_connect("localhost", "root", "", "k22httta_db");
+	    <?php         
+            // 1. Load file cấu hình để kết nối đến máy chủ CSDL, CSDL
+            include('../config.php');
+
 
             // 2. Lấy ra được các dữ liệu mà trang TIN TỨC THÊM MỚI chuyển sang
             $tieu_de_id = $_POST["txtID"];
@@ -40,12 +41,30 @@
             $mo_ta = $_POST["txtMoTa"];
             $noi_dung = $_POST["txtNoiDung"];
 
+            // Lấy ra được thông tin liên quan Ảnh minh họa & đẩy nội dung bức ảnh vào 1 thư mục nào đó trên Máy chủ Web
+            $noi_dat_file_anh_minh_hoa = "../images/".basename($_FILES["txtAnhMinhHoa"]["name"]);
+            $file_anh_tam = $_FILES["txtAnhMinhHoa"]["tmp_name"];
+            $ket_qua_up_anh = move_uploaded_file($file_anh_tam, $noi_dat_file_anh_minh_hoa);
+            if(!$ket_qua_up_anh) {
+                $anh_minh_hoa = NULL;
+            } else {
+                $anh_minh_hoa = basename($_FILES["txtAnhMinhHoa"]["name"]);
+            }
+
             // 3. Viết câu lệnh truy vấn để sửa dữ liệu vào bảng TIN TỨC trong CSDL)
-            $sql = "
-                        UPDATE `tbl_tin_tuc` 
-                        SET `tieu_de` = '".$tieu_de."', `mo_ta` = '".$mo_ta."', `noi_dung` = '".$noi_dung."'
-                        WHERE `tin_tuc_id` = '".$tieu_de_id."'
-            ";
+            if($anh_minh_hoa == NULL) {             
+                $sql = "
+                    UPDATE `tbl_tin_tuc` 
+                    SET `tieu_de` = '".$tieu_de."', `mo_ta` = '".$mo_ta."', `noi_dung` = '".$noi_dung."'
+                    WHERE `tin_tuc_id` = '".$tieu_de_id."'
+                    ";
+            } else {           
+                $sql = "
+                    UPDATE `tbl_tin_tuc` 
+                    SET `tieu_de` = '".$tieu_de."', `mo_ta` = '".$mo_ta."', `noi_dung` = '".$noi_dung."', anh_minh_hoa = '".$anh_minh_hoa."'
+                    WHERE `tin_tuc_id` = '".$tieu_de_id."'
+                    ";                
+            }
 
             // 4. Thực thi câu lệnh truy vấn (mục đích trả về dữ liệu các bạn cần)
             $noi_dung_tin_tuc = mysqli_query($ket_noi, $sql);
